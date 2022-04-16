@@ -4,6 +4,22 @@ $is_auth = rand(0, 1);
 
 $user_name = 'Абзал'; // укажите здесь ваше имя
 
+//Функция урезания поста
+function postingText($text, $length = 300) {    
+    $textArray = explode(' ', $text);
+    $indexArray = -1;
+    $textLength = -1;
+    $textArrayReady = [];
+
+    for ($i = 0; $i < count($textArray); $i++) {
+        $textLength += strlen($textArray[$i]);
+        if ($textLength > $length) {
+            return implode(' ', $textArrayReady) . '... <a class="post-text__more-link" href="#">Читать далее</a>';                                    
+        }
+        $textArrayReady[$i] = $textArray[$i];
+    }
+    return implode(' ', $textArrayReady);    
+}
 // массив из таблицы
 $populars = [    [  "title" => "Цитата",
                         "type" => "post-quote",
@@ -292,7 +308,7 @@ $populars = [    [  "title" => "Цитата",
                     
                     <?php elseif($popular["type"] ==="post-text") : ?>
                         <!--содержимое для поста-текста-->
-                        <p><?=$popular["content"];?></p>
+                        <p><?=postingText($popular["content"]);?></p>
                     <?php endif; ?>
                 </div>
                 <footer class="post__footer">
