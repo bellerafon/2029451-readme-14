@@ -262,3 +262,23 @@ function generate_random_date($index)
 
     return $dt;
 }
+
+/**
+ * Функция урезания поста, по умолчанию до 300 символов
+ * @param string $text полный текст поста
+ * @return string textArrayReady урезанный текст до 300 символов, если символов изначально было больше 300.
+ */
+function postingText($text, $length = 300) {    
+    $textArray = explode(' ', $text);
+    $textLength = -1;
+    $textArrayReady = [];
+
+    for ($i = 0; $i < count($textArray); $i++) {
+        $textLength += strlen($textArray[$i]);
+        if ($textLength > $length) {
+            return implode(' ', $textArrayReady) . '... <a class="post-text__more-link" href="#">Читать далее</a>';                                    
+        }
+        $textArrayReady[$i] = $textArray[$i];
+    }
+    return implode(' ', $textArrayReady);    
+}
