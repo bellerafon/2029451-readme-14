@@ -285,7 +285,7 @@ function postingText($text, $length = 300) {
 
 /**
  * Функция возвращения интервала времени
- * @param string $index индекс массива данных
+ * @param string $postDate дата с массива данных
  * @return string возвращает текст с относительным временем.
  */
 function datePassed($postDate) {    
@@ -295,27 +295,27 @@ function datePassed($postDate) {
     if (date_interval_format($diff, "%i") < 60 && date_interval_format($diff, "%i") > 0) {
         $interval = date_interval_format($diff, "%i");
         $plural = get_noun_plural_form($interval, 'минута', 'минуты', 'минут');
-        echo "$interval $plural назад";
+        return "$interval $plural назад";
     }
     if (date_interval_format($diff, "%H") < 24 && date_interval_format($diff, "%H") > 0) {
         $interval = floor(date_interval_format($diff, "%H"));
         $plural = get_noun_plural_form($interval, 'час', 'часа', 'часов');
-        echo "$interval $plural назад";
+        return "$interval $plural назад";
     }
     if (date_interval_format($diff, "%d") < 7 && date_interval_format($diff, "%d") > 0) {
         $interval = date_interval_format($diff, "%d");
         $plural = get_noun_plural_form($interval, 'день', 'дня', 'дней');
-        echo "$interval $plural назад";
+        return "$interval $plural назад";
     }
     if (date_interval_format($diff, "%d") < 35 && date_interval_format($diff, "%d") >= 7) {
         $interval = floor(date_interval_format($diff, "%d") / 7);
         $plural = get_noun_plural_form($interval, 'неделя', 'недели', 'недель');
-        echo "$interval $plural назад";
+        return "$interval $plural назад";
     }
     if (date_interval_format($diff, "%m") > 0) {
         $interval = date_interval_format($diff, "%m");
         $plural = get_noun_plural_form($interval, 'месяц', 'месяца', 'месяцев');
-        echo "$interval $plural назад";
+        return "$interval $plural назад";
     }
     
 }
