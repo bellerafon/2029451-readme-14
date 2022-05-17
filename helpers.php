@@ -282,3 +282,40 @@ function postingText($text, $length = 300) {
     }
     return implode(' ', $textArrayReady);    
 }
+
+/**
+ * Функция возвращения интервала времени
+ * @param string $postDate дата с массива данных
+ * @return string возвращает текст с относительным временем.
+ */
+function datePassed($postDate) {    
+    $currDate = date_create("now");
+    $postDate = date_create($postDate);
+    $diff = date_diff($currDate, $postDate);    
+    if (date_interval_format($diff, "%i") < 60 && date_interval_format($diff, "%i") > 0) {
+        $interval = date_interval_format($diff, "%i");
+        $plural = get_noun_plural_form($interval, 'минута', 'минуты', 'минут');
+        return "$interval $plural назад";
+    }
+    if (date_interval_format($diff, "%H") < 24 && date_interval_format($diff, "%H") > 0) {
+        $interval = floor(date_interval_format($diff, "%H"));
+        $plural = get_noun_plural_form($interval, 'час', 'часа', 'часов');
+        return "$interval $plural назад";
+    }
+    if (date_interval_format($diff, "%d") < 7 && date_interval_format($diff, "%d") > 0) {
+        $interval = date_interval_format($diff, "%d");
+        $plural = get_noun_plural_form($interval, 'день', 'дня', 'дней');
+        return "$interval $plural назад";
+    }
+    if (date_interval_format($diff, "%d") < 35 && date_interval_format($diff, "%d") >= 7) {
+        $interval = floor(date_interval_format($diff, "%d") / 7);
+        $plural = get_noun_plural_form($interval, 'неделя', 'недели', 'недель');
+        return "$interval $plural назад";
+    }
+    if (date_interval_format($diff, "%m") > 0) {
+        $interval = date_interval_format($diff, "%m");
+        $plural = get_noun_plural_form($interval, 'месяц', 'месяца', 'месяцев');
+        return "$interval $plural назад";
+    }
+    
+}

@@ -152,7 +152,7 @@
                             <div class="post__info">
                                 <!--имя пользователя-->
                                 <b class="post__author-name"><?=htmlspecialchars($popular["username"]);?></b>
-                                <time class="post__time" datetime="">дата</time>
+                                <time class="post__time" datetime="<?=$popular["postDate"];?>" title="<?=date_format(date_create($popular["postDate"]),"d.m.Y H:i:s");?>"><?=datePassed($popular["postDate"]);?></time>
                             </div>
                         </a>
                     </div>
@@ -178,7 +178,7 @@
                         </div>
                     </div>
                 </footer>
-            </article>
+            </article>            
             <?php endforeach; ?>
         </div>
     </div>
