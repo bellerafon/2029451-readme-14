@@ -24,8 +24,12 @@ CREATE TABLE posts (
   link varchar(256),
   view_count int,
   user_id int,
-  content_type_id int,
-  tag_id int
+  content_type_id int
+);
+
+CREATE TABLE content_type (
+  id int AUTO_INCREMENT PRIMARY KEY,
+  content_type varchar(64)
 );
   
 CREATE TABLE comments (
@@ -36,12 +40,14 @@ CREATE TABLE comments (
     post_id int NOT NULL
 );
 
-CREATE TABLE likes (    
+CREATE TABLE likes (
+    id int AUTO_INCREMENT PRIMARY KEY,     
     user_id int NOT NULL,
     post_id int NOT NULL
 );
 
 CREATE TABLE subs (
+    id int AUTO_INCREMENT PRIMARY KEY,
     user_id int NOT NULL,
     user_sub_id int NOT NULL
 );
@@ -60,15 +66,10 @@ CREATE TABLE tags (
 );
 
 CREATE TABLE posts_tags (
+    id int AUTO_INCREMENT PRIMARY KEY,
     post_id int,
     tag_id int
 );
-
-CREATE TABLE roles (
-    id int AUTO_INCREMENT PRIMARY KEY,
-    role_name varchar(64)
-);
-
 
 CREATE INDEX u_author ON users(login);
 
