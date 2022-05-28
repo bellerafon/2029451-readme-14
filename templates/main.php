@@ -86,12 +86,12 @@
         </div>
         <div class="popular__posts">
         <?php foreach ($populars as $popular) : ?>
-            <article class="popular__post post <?=$popular["type"];?>">
+            <article class="popular__post post <?=$popular["content_type"];?>">
                 <header class="post__header">
                     <h2><?=htmlspecialchars($popular["title"]);?></h2> <!--заголовок-->
                 </header>
                 <div class="post__main">                    
-                    <?php if($popular["type"] ==="post-quote") : ?>
+                    <?php if($popular["content_type"] ==="post-quote") : ?>
                         <!--содержимое для поста-цитаты-->
                         <blockquote>
                             <p>
@@ -100,7 +100,7 @@
                             <cite>Неизвестный Автор</cite>
                         </blockquote>
                                       
-                    <?php elseif($popular["type"] ==="post-link") : ?>  
+                    <?php elseif($popular["content_type"] ==="post-link") : ?>  
                         <!--содержимое для поста-ссылки-->                        
                         <div class="post-link__wrapper">
                             <a class="post-link__external" href="http://<?=htmlspecialchars($popular["content"]);?>" title="Перейти по ссылке">
@@ -116,13 +116,13 @@
                             </a>
                         </div>
                     
-                    <?php elseif($popular["type"] ==="post-photo") : ?>
+                    <?php elseif($popular["content_type"] ==="post-photo") : ?>
                         <!--содержимое для поста-фото-->
                         <div class="post-photo__image-wrapper">
                             <img src="img/<?=htmlspecialchars($popular["content"]);?>" alt="Фото от пользователя" width="360" height="240">
                         </div>
                     
-                    <?php elseif($popular["type"] ==="post-video") : ?>
+                    <?php elseif($popular["content_type"] ==="post-video") : ?>
                         <!--содержимое для поста-видео-->
                         <div class="post-video__block">
                             <div class="post-video__preview">
@@ -137,7 +137,7 @@
                             </a>
                         </div>
                     
-                    <?php elseif($popular["type"] ==="post-text") : ?>
+                    <?php elseif($popular["content_type"] ==="post-text") : ?>
                         <!--содержимое для поста-текста-->
                         <p><?=postingText(htmlspecialchars($popular["content"]));?></p>
                     <?php endif; ?>
@@ -151,8 +151,8 @@
                             </div>
                             <div class="post__info">
                                 <!--имя пользователя-->
-                                <b class="post__author-name"><?=htmlspecialchars($popular["username"]);?></b>
-                                <time class="post__time" datetime="<?=$popular["postDate"];?>" title="<?=date_format(date_create($popular["postDate"]),"d.m.Y H:i:s");?>"><?=datePassed($popular["postDate"]);?></time>
+                                <b class="post__author-name"><?=htmlspecialchars($popular["login"]);?></b>
+                                <time class="post__time" datetime="<?=$popular["dt_add"];?>" title="<?=date_format(date_create($popular["dt_add"]),"d.m.Y H:i:s");?>"><?=datePassed($popular["dt_add"]);?></time>
                             </div>
                         </a>
                     </div>
