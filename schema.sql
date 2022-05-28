@@ -110,7 +110,6 @@ ADD UNIQUE INDEX login (login);
 -- Create index `u_author` on table `users`
 --
 ALTER TABLE users
-ADD INDEX u_author (login);
 
 --
 -- Create table `tags`
@@ -278,10 +277,10 @@ INSERT INTO subs VALUES
 --
 INSERT INTO posts VALUES
 (1, '2022-05-23 12:04:14', 'Цитата', 'Мы в жизни любим только раз, а после ищем лишь похожих', 'Лариса', 'userpic-larisa-small.jpg', NULL, NULL, NULL, 7, 1, 5),
-(2, '2022-05-23 12:04:14', 'Игра престолов', 'Не могу дождаться начала финального сезона своего любимого сериала!', 'Владик', 'userpic.jpg', NULL, NULL, NULL, 5, 2, 2),
-(3, '2022-05-23 12:04:14', 'Наконец, обработал фотки!', 'rock-medium.jpg', 'Виктор', 'userpic-mark.jpg', NULL, NULL, NULL, 8, 3, 3),
-(4, '2022-05-23 12:04:14', 'Моя мечта', 'coast-medium.jpg', 'Лариса', 'userpic-larisa-small.jpg', NULL, NULL, NULL, 3, 1, 3),
-(5, '2022-05-23 12:04:14', 'Лучшие курсы', 'www.htmlacademy.ru', 'Владик', 'userpic.jpg', NULL, NULL, NULL, 1, 2, 4);
+(2, '2022-05-23 12:04:14', 'Игра престолов', 'Не могу дождаться начала финального сезона своего любимого сериала!', NULL, 'userpic.jpg', NULL, NULL, NULL, 5, 2, 2),
+(3, '2022-05-23 12:04:14', 'Наконец, обработал фотки!', 'rock-medium.jpg', NULL, 'userpic-mark.jpg', NULL, NULL, NULL, 8, 3, 3),
+(4, '2022-05-23 12:04:14', 'Моя мечта', 'coast-medium.jpg', NULL, 'userpic-larisa-small.jpg', NULL, NULL, NULL, 3, 1, 3),
+(5, '2022-05-23 12:04:14', 'Лучшие курсы', 'www.htmlacademy.ru', NULL, 'userpic.jpg', NULL, NULL, NULL, 1, 2, 4);
 
 -- 
 -- Dumping data for table messages

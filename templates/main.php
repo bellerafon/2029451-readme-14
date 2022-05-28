@@ -151,7 +151,7 @@
                             </div>
                             <div class="post__info">
                                 <!--имя пользователя-->
-                                <b class="post__author-name"><?=htmlspecialchars($popular["author"]);?></b>
+                                <b class="post__author-name"><?=htmlspecialchars($popular["login"]);?></b>
                                 <time class="post__time" datetime="<?=$popular["dt_add"];?>" title="<?=date_format(date_create($popular["dt_add"]),"d.m.Y H:i:s");?>"><?=datePassed($popular["dt_add"]);?></time>
                             </div>
                         </a>
